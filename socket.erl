@@ -2,28 +2,45 @@
 
 -author('L Bjork <gusbjorklu@student.gu.se>').
 
--export([start/0,loop/1,match_data/1]).
+-export([start/0, loop0/1, worker/2]).
 
--define(TCP_OPTIONS, [binary, {packet, 0}, {active, false}, {reuseaddr, true}]).
--define(Port,8080).
+-define(PORT,8080).
 
-% Call echo:listen(Port) to start the service.
+
 start() ->
-  {ok, LSocket} = gen_tcp:listen(?Port, ?TCP_OPTIONS),
-  spawn(fun() -> accept(LSocket) end).
+  start(?PORT).
+start(P) ->
+  spawn(?MODULE, loop0, [P]).
 
-% Wait for incoming connections and spawn the echo loop when we get one.
-accept(LSocket) ->
-  {ok, Socket} = gen_tcp:accept(LSocket),
-  Pid = spawn(fun() ->
-    io:format("Connection accepted ~n", []),
-    loop(Socket)
-  end),
-  gen_tcp:controlling_process(Socket, Pid),
-  accept(LSocket).
+loop0(Port) ->
+  case gen_tcp:listen(Port, [binary, {reuseaddr, true},{packet, 0}, {active, false}]) of
+  {ok, LSock} ->
+    spawn(?MODULE, worker, [self(), LSock]),
+    loop(LSock);
+  Other ->
+    io:format("Can't listen to socket ~p~n", [Other])
+  end.
+
+loop(S) ->
+  receive
+  next_worker ->
+    spawn_link(?MODULE, worker, [self(), S])
+  end,
+  loop(S).
+
+worker(Server, LS) ->
+  case gen_tcp:accept(LS) of
+    {ok, Socket} ->
+      Server ! next_worker,
+      %%call for reciver with Socket
+    reciver(Socket);
+    {error, Reason} ->
+      Server ! next_worker,
+      io:format("Can't accept socket ~p~n", [Reason])
+    end.
 
 % Takes the recived data as "Data" and sends it to the pattern macher
-loop(Socket) ->
+reciver(Socket) ->
     case gen_tcp:recv(Socket, 0) of
         {ok, Data} ->
           io:format("In data ~p~n", [Data]),
