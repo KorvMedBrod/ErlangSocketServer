@@ -5,7 +5,7 @@
 %%% Created :  3 Nov 1998 by Claes Wikstrom <klacke@erix.ericsson.se>
 %%%----------------------------------------------------------------------
 
--module(socket).
+-module(chargen).
 -author('klacke@erix.ericsson.se').
 
 -export([start_link/0, loop0/1, worker/2]).
@@ -30,7 +30,7 @@ loop0(Port) ->
 loop(S) ->
     receive
 	next_worker ->
-	    spawn_link(?MODULE, worker, [self(), S])
+      spawn_link(?MODULE, worker, [self(), S])
     end,
     loop(S).
 

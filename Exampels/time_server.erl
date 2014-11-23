@@ -28,6 +28,7 @@ start() ->
           loop(Listen) ->
             case gen_tcp:accept(Listen) of
               {ok, S} ->
+                io:format({ok,S}),
                 gen_tcp:send(S, io_lib:format("~p~n", [{date(), time()}])),
                 gen_tcp:close(S),
                 loop(Listen);
