@@ -39,6 +39,7 @@ worker(Server, LS) ->
     case gen_tcp:accept(LS) of
 	{ok, Socket} ->
 	    Server ! next_worker,
+      %%call for reciver with Socket
 	    gen_chars(Socket, 32);
 	{error, Reason} ->
 	    Server ! next_worker,
