@@ -63,9 +63,6 @@ match_data(?caseTwo) ->
 match_data(?caseThree ) ->
   RetunValue = shuffle(?tweets),
   lists:flatten(io_lib:format("~p", [RetunValue]));
-  %random:seed(5991,29821,991);
-  %random:seed("#sananaman", "#769idoneigdf", "#levelapp", "#g_bf", "#pjt2014", "#centralbabiro", "#dw_avengers", "#veloraindonesia", "#stalkers", "#ilhamitunc", "#kyuhyun4thwin", "#matilampu", "#lampumerah", "#khamoshiyan", "#ikede", "#5thcpccf", "#tvtokyo", "#midweekhappiness", "#wts", "#npask", "#lastfm"," #listas_zoo", "#swlille", "#abdullahabdulaziz", "#bambam", "#swlyon", "#jsb3", "#winitwednesday", "#sgkilometromv", "#swgiza", "#btsthanh", "#teog", "#xiumin", "#swamman", "#kumbadjid","#pymesunidas","#bbau", "#5sosarias", "#gsb2014", "#jackbam");
-  %"{#sananaman, #769idoneigdf, #levelapp, #g_bf, #pjt2014, #centralbabiro, #dw_avengers, #veloraindonesia, #stalkers, #ilhamitunc, #kyuhyun4thwin, #matilampu, #lampumerah, #khamoshiyan, #ikede, #5thcpccf, #tvtokyo, #midweekhappiness, #wts, #npask, #lastfm, #listas_zoo, #swlille, #abdullahabdulaziz, #bambam, #swlyon, #jsb3, #winitwednesday, #sgkilometromv, #swgiza, #btsthanh, #teog, #xiumin, #swamman, #kumbadjid, #pymesunidas, #bbau, #5sosarias, #gsb2014, #jackbam}";
 match_data(_) ->
   "no match".
 
