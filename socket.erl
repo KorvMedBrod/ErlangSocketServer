@@ -62,7 +62,9 @@ match_data(?caseTwo) ->
   "a tweet";
 match_data(?caseThree ) ->
   RetunValue = shuffle(?tweets),
-  lists:flatten(io_lib:format("~p", [RetunValue]));
+  io:format("Conversting to string ~n"),
+  convertToString(tuple_to_list([RetunValue]),"");
+  %lists:flatten(io_lib:format("~p", [RetunValue]));
 match_data(_) ->
   "no match".
 
@@ -80,3 +82,8 @@ shuffle(Tuple, N)->
   Tuple2 = setelement(N, Tuple, B),
   Tuple3 = setelement(Random, Tuple2, A),
   shuffle(Tuple3, N - 1).
+
+convertToString([],S) ->
+  S;
+convertToString([Element | _Tail],S) ->
+  convertToString(Element, S + _Tail).
