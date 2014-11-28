@@ -22,8 +22,8 @@ mapred(Pid, Bucket) ->
       riakc_pb_socket:mapred(
         Pid,
         Bucket,
-        [{map, {modfun, ?MODULE, fuck_you_count}, none, false},
-        {reduce, {modfun, ?MODULE, fuck_you_merge}, none, true}]).
+        [{map, {modfun, ?MODULE, count}, none, false},
+        {reduce, {modfun, ?MODULE, merge}, none, true}]).
 
 %sends back the checked list with the top 5 hashtag.
 %get_most_popular_tweets([], [Big], NotUsed, List) -> checklist(NotUsed, Big, List);
