@@ -1,5 +1,9 @@
 -module(mapreduce).
--export([mapred1/2, mapred/2, merge/2, count/3, get_most_popular_tweets/4]).
+-export([mapred1/2, mapred/2, merge/2, count/3, get_most_popular_tweets/4, start/0]).
+
+start() ->
+  {ok, Pid} = riakc_pb_socket:start("127.0.0.1", 10017).
+  mapred1(Pid,<<"hashtags">>).
 
 mapred1(Pid, Bucket) ->
   {ok, [{1, [R]}]} = mapred(Pid, Bucket),
