@@ -42,7 +42,7 @@ mapred(Pid, Bucket) ->
 %get_most_popular_tweets([{Hash1, V1} , {Hash2, V2} | Startlist], [{HHash, HV}], NotBiggest, Big) when (V1 < V2) and (V2 > HV) -> get_most_popular_tweets(Startlist, [{Hash2, V2}], [{Hash1, V1} | {HHash, HV} | NotBiggest], Big);
 %get_most_popular_tweets([{Hash1, V1} , {Hash2, V2} | Startlist], [{HHash, HV}], NotBiggest, Big) when (V1 < V2) and (V2 < HV) -> get_most_popular_tweets(Startlist, [{HHash, HV}], [{Hash1, V1} | {Hash2, V2} | NotBiggest], Big).
 
-get_most_popular_tweets(_, [Big], NotUsed, List) -> checklist(NotUsed, Big, List);
+get_most_popular_tweets([_], [Big], NotUsed, List) -> checklist(NotUsed, Big, List);
 get_most_popular_tweets([{Hash1, V1} , {Hash2, V2} | Startlist], [], [], Big)
   when V1 >= V2 -> get_most_popular_tweets(Startlist, [{Hash1, V1}], [{Hash2, V2}], Big);
 get_most_popular_tweets([{Hash1, V1} , {Hash2, V2} | Startlist], [], [], Big)
