@@ -62,6 +62,7 @@ match_data(?caseTwo) ->
 match_data(?caseThree) ->
   "{#sananaman, #769idoneigdf, #levelapp, #g_bf, #pjt2014, #centralbabiro, #dw_avengers, #veloraindonesia, #stalkers, #ilhamitunc, #kyuhyun4thwin, #matilampu, #lampumerah, #khamoshiyan, #ikede, #5thcpccf, #tvtokyo, #midweekhappiness, #wts, #npask, #lastfm, #listas_zoo, #swlille, #abdullahabdulaziz, #bambam, #swlyon, #jsb3, #winitwednesday, #sgkilometromv, #swgiza, #btsthanh, #teog, #xiumin, #swamman, #kumbadjid, #pymesunidas, #bbau, #5sosarias, #gsb2014, #jackbam}";
 match_data(?caseFour) ->
-  lists:flatten(io_lib:format("~p", [socket_mapreduce:start()]));
+  List = socket_mapreduce:start(),
+  lists:flatten(io_lib:format("~p", [List]));
 match_data(_) ->
   "no match".
