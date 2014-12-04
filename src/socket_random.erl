@@ -12,7 +12,7 @@ randomEntry(Pid, Bucket) ->
   {ok, List} = riakc_pb_socket:list_keys(Pid, Bucket),
   EntryNumber = randomize(List),
   {ok, Entry} = riakc_pb_socket:get(Pid, Bucket, EntryNumber),
-  Entry.
+  binary_to_term(riakc_obj:get_value(Entry)).
 randomize(List)->
   Index = random:uniform(length(List)),
   lists:nth(Index,List).
