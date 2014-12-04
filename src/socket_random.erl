@@ -12,7 +12,7 @@ randomEntry(Pid, Bucket) ->
   {ok, R} = riakc_pb_socket:list_keys(Pid, Bucket),
   List = dict:to_list(R),
   EntryNumber = randomize(List),
-  {ok, Entry} = riakc_pb_socket:get(Pid, Bucket, EntryNumber).
+  {ok, Entry} = riakc_pb_socket:get(Pid, Bucket, EntryNumber),
   Entry.
 randomize(List)->
   Index = random:uniform(length(List)),
