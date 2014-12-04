@@ -9,8 +9,7 @@ start() ->
   randomEntry(Pid,<<"hashtags">>).
 
 randomEntry(Pid, Bucket) ->
-  {ok, R} = riakc_pb_socket:list_keys(Pid, Bucket),
-  List = dict:to_list(R),
+  {ok, List} = riakc_pb_socket:list_keys(Pid, Bucket),
   EntryNumber = randomize(List),
   {ok, Entry} = riakc_pb_socket:get(Pid, Bucket, EntryNumber),
   Entry.
