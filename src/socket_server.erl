@@ -57,7 +57,8 @@ reciver(Socket) ->
 
 %The pattern macting is towards "Bit Strings"
 match_data(?caseOne) ->
-  socket_random:start();
+  List = socket_random:start(),
+  lists:flatten(io_lib:format("~p", [List]));
 match_data(?caseTwo) ->
   "a tweet";
 match_data(?caseThree) ->
