@@ -54,9 +54,10 @@ reciver(Socket) ->
 -define(caseTwo, <<"GetTweet">>).
 -define(caseThree, <<"Test">>).
 -define(caseFour,<<"GetTopList">>).
+
 %The pattern macting is towards "Bit Strings"
 match_data(?caseOne) ->
-  "Here's a random tweet";
+  socket_random:start();
 match_data(?caseTwo) ->
   "a tweet";
 match_data(?caseThree) ->
