@@ -8,7 +8,7 @@
 
 2.1  In order to run it in the background
 
-        $ erl -pa deps/*/ebin -pa ebin -s "socket" -noshell -detached
+        $ erl -pa deps/*/ebin -pa ebin -s "socket_server" -noshell -detached
 
 2.2  Or if you want to start or test mapreduce
 

@@ -1,4 +1,4 @@
--module(socket).
+-module(socket_server).
 
 -author('L Bjork <gusbjorklu@student.gu.se>').
 
