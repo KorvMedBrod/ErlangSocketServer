@@ -9,7 +9,7 @@ start() ->
   randomEntry(Pid,<<"hashtags">>).
 
 randomEntry(Pid, Bucket) ->
-  {ok, [{1, [R]}]} = mapred(Pid, Bucket),
+  {ok, [{1, [R]}]} = riakc_pb_socket:list_keys(Pid, Bucket),
   List = dict:to_list(R),
   randomize(List).
 
