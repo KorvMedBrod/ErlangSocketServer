@@ -1,4 +1,4 @@
--module(socket_server).
+-module(socket_random).
 
 -author('L Bjork <gusbjorklu@student.gu.se>').
 
