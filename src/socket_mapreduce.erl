@@ -1,5 +1,9 @@
--module(mapreduce).
--export([mapred1/2, mapred/2, merge/2, count/3, get_most_popular_tweets/4]).
+-module(socket_mapreduce).
+-export([mapred1/2, mapred/2, merge/2, count/3, get_most_popular_tweets/4, start/0]).
+
+start() ->
+  {ok, Pid} = riakc_pb_socket:start("127.0.0.1", 10017),
+  mapred1(Pid,<<"hashtags">>).
 
 mapred1(Pid, Bucket) ->
   {ok, [{1, [R]}]} = mapred(Pid, Bucket),
@@ -38,10 +42,17 @@ mapred(Pid, Bucket) ->
 %get_most_popular_tweets([{Hash1, V1} , {Hash2, V2} | Startlist], [{HHash, HV}], NotBiggest, Big) when (V1 < V2) and (V2 > HV) -> get_most_popular_tweets(Startlist, [{Hash2, V2}], [{Hash1, V1} | {HHash, HV} | NotBiggest], Big);
 %get_most_popular_tweets([{Hash1, V1} , {Hash2, V2} | Startlist], [{HHash, HV}], NotBiggest, Big) when (V1 < V2) and (V2 < HV) -> get_most_popular_tweets(Startlist, [{HHash, HV}], [{Hash1, V1} | {Hash2, V2} | NotBiggest], Big).
 
+<<<<<<< HEAD:mapreduce.erl
 get_most_popular_tweets([], [Big], NotUsed, List) -> checklist(NotUsed, Big, List);
 get_most_popular_tweets([{Hash1,V1} , {Hash2,V2} | Startlist], [], [], Big)
   when V1 >= V2 -> get_most_popular_tweets(Startlist,[{Hash1, V1}],[{Hash2, V2}], Big);
 get_most_popular_tweets([{Hash1, V1},{Hash2, V2} | Startlist], [], [], Big)
+=======
+get_most_popular_tweets([{<<>>}], [Big], NotUsed, List) -> checklist(NotUsed, Big, List);
+get_most_popular_tweets([{Hash1, V1} , {Hash2, V2} | Startlist], [], [], Big)
+  when V1 >= V2 -> get_most_popular_tweets(Startlist, [{Hash1, V1}], [{Hash2, V2}], Big);
+get_most_popular_tweets([{Hash1, V1} , {Hash2, V2} | Startlist], [], [], Big)
+>>>>>>> FETCH_HEAD:src/socket_mapreduce.erl
   when V1 < V2 -> get_most_popular_tweets(Startlist, [{Hash2, V2}], [{Hash1, V1}], Big);
 get_most_popular_tweets([{Hash1, V1} , {Hash2, V2} | Startlist], [{HHash, HV}], NotBiggest, Big)
   when (V1 >= V2)
