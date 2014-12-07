@@ -15,6 +15,7 @@ start(P) ->
 loop0(Port) ->
   case gen_tcp:listen(Port, [binary, {reuseaddr, true},{packet, 0}, {active, false}]) of
   {ok, LSock} ->
+    server_singleton:start(),
     spawn(?MODULE, worker, [self(), LSock]),
     loop(LSock);
   Other ->

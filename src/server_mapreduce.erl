@@ -3,7 +3,6 @@
 
 start() ->
   {ok, Pid} = riakc_pb_socket:start("127.0.0.1", 10017),
-  server_singleton:start(),
   RetunValue = mapred1(Pid,<<"hashtags">>),
   server_singleton:set(RetunValue),
   RetunValue.
