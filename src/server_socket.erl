@@ -11,9 +11,9 @@ start() ->
   start(?PORT).
 start(P) ->
   spawn(?MODULE, loop0, [P]),
-  spawn(?MODULE, startMapreduce, []).
+  spawn(?MODULE, startmap, []).
 
-startMapreduce() ->
+startmap() ->
   server_singleton:start(),
   server_singleton:set("Placeholder"),
   mapreduce().
