@@ -10,13 +10,24 @@
 start() ->
   start(?PORT).
 start(P) ->
-  spawn(?MODULE, loop0, [P]).
+  spawn(?MODULE, loop0, [P]),
+  spawn(?MODULE, startMapreduce, []).
+
+startMapreduce() ->
+  server_singleton:start(),
+  server_singleton:set("Placeholder"),
+  mapreduce().
+
+mapreduce() ->
+  List = server_mapreduce:start(),
+  server_singleton:set(lists:flatten(io_lib:format("~p", [List]))),
+  %waiting for 15 minutes (900000 milliseconds)
+  timer:sleep(900000),
+  mapreduce().
 
 loop0(Port) ->
   case gen_tcp:listen(Port, [binary, {reuseaddr, true},{packet, 0}, {active, false}]) of
   {ok, LSock} ->
-    server_singleton:start(),
-    server_singleton:set("Placeholder"),
         spawn(?MODULE, worker, [self(), LSock]),
     loop(LSock);
   Other ->
@@ -67,10 +78,7 @@ match_data(?caseTwo) ->
 match_data(?caseThree) ->
   "{#sananaman, #769idoneigdf, #levelapp, #g_bf, #pjt2014, #centralbabiro, #dw_avengers, #veloraindonesia, #stalkers, #ilhamitunc, #kyuhyun4thwin, #matilampu, #lampumerah, #khamoshiyan, #ikede, #5thcpccf, #tvtokyo, #midweekhappiness, #wts, #npask, #lastfm, #listas_zoo, #swlille, #abdullahabdulaziz, #bambam, #swlyon, #jsb3, #winitwednesday, #sgkilometromv, #swgiza, #btsthanh, #teog, #xiumin, #swamman, #kumbadjid, #pymesunidas, #bbau, #5sosarias, #gsb2014, #jackbam}";
 match_data(?caseFour) ->
-  %io:format("Case four~n"),
-  List = server_mapreduce:start(),
-  server_singleton:set(lists:flatten(io_lib:format("~p", [List]))),
-  %io:format("Got list ~p~n", [List]),
-  lists:flatten(io_lib:format("~p", [List]));
+  {ok,Return} = server_singleton:get(),
+  Return;
 match_data(_) ->
   "no match".
