@@ -1,4 +1,4 @@
-{application, socket,
+{application, server,
  [
   {description, ""},
   {vsn, "0.1"},
@@ -7,6 +7,6 @@
                   kernel,
                   stdlib
                  ]},
-  %{mod, { socket_app, []}},
+  %{mod, { server_app, []}},
   {env, []}
  ]}.

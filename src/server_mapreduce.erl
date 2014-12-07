@@ -1,4 +1,4 @@
--module(socket_mapreduce).
+-module(server_mapreduce).
 -export([mapred1/2, mapred/2, merge/2, count/3, get_most_popular_tweets/4, start/0]).
 
 start() ->
