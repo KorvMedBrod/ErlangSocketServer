@@ -67,6 +67,7 @@ match_data(?caseThree) ->
 match_data(?caseFour) ->
   %io:format("Case four~n"),
   List = server_mapreduce:start(),
+  server_singleton:set(lists:flatten(io_lib:format("~p", [List]))),
   %io:format("Got list ~p~n", [List]),
   lists:flatten(io_lib:format("~p", [List]));
 match_data(_) ->
