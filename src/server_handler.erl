@@ -2,9 +2,12 @@
 
 -author('L Bjork <gusbjorklu@student.gu.se>').
 
--export([stop/0]).
+-export([stop/0,stopping/0]).
 
 stop() ->
+  spawn(?MODULE, stoping, [P]).
+
+stopping() ->
   {ok,ServerName}=inet:gethostname(),
   Conector = "server_socket@",
   Connection = Conector ++ ServerName,
