@@ -5,7 +5,7 @@ PIDFILE=SocketServer.pid
 case "$1" in
   start)
   echo "staring\n"
-  exec erl -pa deps/*/ebin -pa ebin -s "server_socket" -noshell -detached & pid=$!
+  exec erl -pa deps/*/ebin -pa ebin -s "server_socket" -sname server_socket -noshell -detached & pid=$!
   echo "started with pid $pid"
   echo $pid >$PIDFILE
   ;;

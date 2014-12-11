@@ -2,7 +2,7 @@
 
 -author('L Bjork <gusbjorklu@student.gu.se>').
 
--export([start/0, loop0/1, worker/2, startmap/0]).
+-export([start/0, loop0/1, worker/2, startmap/0,stop/0]).
 
 -define(PORT,8080).
 
@@ -12,6 +12,9 @@ start() ->
 start(P) ->
   spawn(?MODULE, loop0, [P]),
   spawn(?MODULE, startmap, []).
+
+stop() ->
+  exit(whereis(?SERVER), ok).
 
 startmap() ->
   server_singleton:start(),
