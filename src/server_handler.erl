@@ -4,7 +4,7 @@
 
 -export([stop/0]).
 
--stop() ->
+stop() ->
   {ok,ServerName}=inet:gethostname(),
   Conector = "server_socket@",
   Connection = Conector ++ ServerName,
