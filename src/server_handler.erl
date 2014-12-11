@@ -5,7 +5,7 @@
 -export([stop/0,stopping/0]).
 
 stop() ->
-  spawn(?MODULE, stoping, [P]).
+  spawn(?MODULE, stopping, []).
 
 stopping() ->
   {ok,ServerName}=inet:gethostname(),
