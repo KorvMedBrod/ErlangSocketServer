@@ -2,7 +2,7 @@
 
 -author('L Bjork <gusbjorklu@student.gu.se>').
 
--export([start/0, loop0/1, worker/2, startmap/0,]).
+-export([start/0, loop0/1, worker/2, startmap/0]).
 
 -define(PORT,8080).
 
