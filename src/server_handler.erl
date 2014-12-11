@@ -9,4 +9,4 @@ stop() ->
   Conector = "server_socket@",
   Connection = Conector ++ ServerName,
   %net_kernel:connect_node(Connection).
-  rpc:call(Connection, init, stop, []).
+  rpc:call(list_to_atom(Connection), init, stop, []).
