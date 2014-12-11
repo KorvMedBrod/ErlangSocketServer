@@ -2,7 +2,7 @@
 
 -author('L Bjork <gusbjorklu@student.gu.se>').
 
--export([start/0, loop0/1, worker/2, startmap/0]).
+-export([start/0, loop0/1, worker/2]).
 
 -define(PORT,8080).
 
@@ -11,12 +11,10 @@ start() ->
   start(?PORT).
 start(P) ->
   spawn(?MODULE, loop0, [P]),
-  spawn(?MODULE, startmap, []).
-
-startmap() ->
   server_singleton:start(),
   server_singleton:set("Placeholder"),
   mapreduce().
+
 
 mapreduce() ->
   List = server_mapreduce:start(),
