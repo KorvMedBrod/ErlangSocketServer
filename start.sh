@@ -1,17 +1,15 @@
 #! /bin/sh
 
-PIDFILE=SocketServer.pid
 
 case "$1" in
   start)
-  echo "staring\n"
-  exec erl -pa deps/*/ebin -pa ebin -s "server_socket" -sname server_socket -noshell -detached & pid=$!
-  echo "started with pid $pid"
-  echo $pid >$PIDFILE
+  exec erl -pa deps/*/ebin -pa ebin -s "server_socket" -sname server_socket -noshell -detached
+  echo "server started"
   ;;
 
   stop)
-  kill -9 <$PIDFILE
+  exec erl -pa deps/*/ebin -pa ebin -s "server_handler:stop" -sname server_handler -noshell -detached
+  echo "server stoped"
   ;;
 
   status)
