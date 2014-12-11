@@ -2,7 +2,7 @@
 
 -author('L Bjork <gusbjorklu@student.gu.se>').
 
--export([stop/0,stopping/0]).
+-export([stop/0,stopping/0,start/0]).
 
 stop() ->
   spawn(?MODULE, stopping, []).
@@ -13,3 +13,6 @@ stopping() ->
   Connection = Conector ++ ServerName,
   %net_kernel:connect_node(Connection).
   rpc:call(list_to_atom(Connection), init, stop, []).
+
+start() ->
+  io:format("testing").
