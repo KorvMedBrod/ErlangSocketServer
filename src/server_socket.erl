@@ -10,7 +10,7 @@
 start() ->
   start(?PORT).
 start(P) ->
-  loop0(P),
+  spawn(?MODULE, loop0, [P]),
   spawn(?MODULE, startmap, []).
 
 startmap() ->
