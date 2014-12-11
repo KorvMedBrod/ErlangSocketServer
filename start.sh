@@ -11,7 +11,7 @@ case "$1" in
   ;;
 
   stop)
-  for line in $ (cat $PIDFILE) do kill -9 "$ line" done
+  kill -9 <$PIDFILE
   ;;
 
   status)
