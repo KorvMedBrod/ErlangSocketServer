@@ -8,11 +8,12 @@ case "$1" in
   ;;
 
   stop)
-  exec erl -pa deps/*/ebin -pa ebin -s "server_handler:stop" -sname server_handler -noshell -detached
-  echo "server stoped"
+  echo "Nothing happens"
   ;;
 
   status)
+  exec erl -pa deps/*/ebin -pa ebin -s "server_handler:status()" -sname server_socket -noshell -detached
+
   echo "another time"
   ;;
   restart)
