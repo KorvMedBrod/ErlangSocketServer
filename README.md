@@ -16,3 +16,11 @@
 
         $ erl -pa deps/*/ebin -pa ebin
         $ server_mapreduce:start().
+
+2.3 Using the server handler module
+
+        $ erl -pa deps/*/ebin -pa ebin -sname server_handler
+        shutdown the server
+        $ server_handler:stop().
+        status, expected return is "true"
+        $ server_handler:status().
