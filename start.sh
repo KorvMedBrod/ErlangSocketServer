@@ -11,7 +11,7 @@ case "$1" in
   ;;
 
   status)
-  exec erl -pa deps/*/ebin -pa ebin -s "server_handler:status()" -sname server_handler -noshell -detached && echo "status"
+  exec erl -pa deps/*/ebin -pa ebin -s "server_handler:status()" -sname server_handler && echo "status"
   ;;
   restart)
   stop

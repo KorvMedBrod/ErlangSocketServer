@@ -15,4 +15,4 @@ status() ->
   {ok,ServerName}=inet:gethostname(),
   Conector = "server_socket@",
   Connection = Conector ++ ServerName,
-  net_kernel:connect_node(Connection).
+  net_kernel:connect_node(list_to_atom(Connection)).
