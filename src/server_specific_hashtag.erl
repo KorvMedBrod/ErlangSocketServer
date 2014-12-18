@@ -72,3 +72,6 @@ checklist(NotUsed, Big, List) ->
       1 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
       0 -> get_most_popular_tweets(NotUsed, [], [], [Big | List])
     end.
+
+check_length([], N) -> N;
+    check_length([_ | Tail], N) -> check_length(Tail, N+1).
