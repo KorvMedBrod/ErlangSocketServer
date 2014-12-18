@@ -1,5 +1,5 @@
 -module(server_specific_hashtag).
--export([mapred1/2, mapred/2, merge/2, count/3, get_most_popular_tweets/4, start/0, start/1]).
+-export([mapred1/2, mapred/2, merge/2, count/3, get_most_popular_tweets/4, start/1]).
 
 start(Hashtag) ->
   {ok, Pid} = riakc_pb_socket:start("127.0.0.1", 10017),
