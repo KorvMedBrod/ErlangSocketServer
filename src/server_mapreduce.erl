@@ -66,9 +66,8 @@ and (V1 > HV) ->
 
   checklist(NotUsed, Big, List) ->
     case check_length(List, 0) of
-      get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      100 < List
-
+      100 > List;
+      100 < get_most_popular_tweets(NotUsed, [], [], [Big | List])
     end.
 
     check_length([], N) -> N;
