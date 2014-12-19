@@ -80,7 +80,5 @@ match_data(?caseThree) ->
 match_data(?caseFour) ->
   {ok,Return} = server_singleton:get(),
   Return;
-match_data({_}) ->
-  "it's a hashtag";
 match_data(_) ->
   "no match".
