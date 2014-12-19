@@ -65,9 +65,10 @@ and (V1 > HV) ->
   when (V1 > HV) -> get_most_popular_tweets([], [{Hash1, V1}], [{HHash, HV} | NotBiggest], Big).
 
   checklist(NotUsed, Big, List) ->
-    case check_length(List, 0) of
-      100 > List;
-      100 < get_most_popular_tweets(NotUsed, [], [], [Big | List])
+    Number = check_length(List, 0);
+    case Number of
+      100 -> List;
+      Number -> get_most_popular_tweets(NotUsed, [], [], [Big | List])
     end.
 
     check_length([], N) -> N;
