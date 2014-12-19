@@ -66,57 +66,9 @@ and (V1 > HV) ->
 
   checklist(NotUsed, Big, List) ->
     case check_length(List, 0) of
-      50 -> List;
-      49 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      48 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      47 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      46 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      45 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      44 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      43 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      42 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      41 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      40 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      39 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      38 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      37 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      36 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      35 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      34 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      33 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      32 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      31 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      30 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      29 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      28 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      27 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      26 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      25 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      24 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      23 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      22 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      21 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      20 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      19 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      18 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      17 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      16 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      15 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      14 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      13 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      12 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      11 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      10 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      9 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      8 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      7 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      6 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      5 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      4 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      3 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      2 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      1 -> get_most_popular_tweets(NotUsed, [], [], [Big | List]);
-      0 -> get_most_popular_tweets(NotUsed, [], [], [Big | List])
+      get_most_popular_tweets(NotUsed, [], [], [Big | List]);
+      100 < List
+
     end.
 
     check_length([], N) -> N;
